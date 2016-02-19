@@ -77,7 +77,8 @@ public class SentenceSourceChecker {
     File languageModelDir = commandLine.hasOption("languagemodel") ?
                             new File(commandLine.getOptionValue("languagemodel")) : null;
     Pattern filter = commandLine.hasOption("filter") ? Pattern.compile(commandLine.getOptionValue("filter")) : null;
-    prg.run(propFile, disabledRuleIds, languageCode, Arrays.asList(fileNames), ruleIds, categoryIds, maxArticles, maxErrors, languageModelDir, filter);
+    prg.run(propFile, disabledRuleIds, languageCode, Arrays.asList(fileNames), ruleIds, categoryIds, maxArticles, 
+        maxErrors, languageModelDir, filter, commandLine.hasOption("markup"));
   }
 
   private static void addDisabledRules(String languageCode, Set<String> disabledRuleIds, Properties disabledRules) {
@@ -126,6 +127,7 @@ public class SentenceSourceChecker {
     options.addOption(OptionBuilder.withLongOpt("filter").withArgName("regex").hasArg()
             .withDescription("Consider only sentences that contain this regular expression (for speed up)")
             .create());
+    options.addOption(OptionBuilder.withLongOpt("markup").withDescription("Keep Wikipedia markup in error context").create());
     try {
       CommandLineParser parser = new GnuParser();
       return parser.parse(options, args);
@@ -141,7 +143,8 @@ public class SentenceSourceChecker {
   }
 
   private void run(File propFile, Set<String> disabledRules, String langCode, List<String> fileNames, String[] ruleIds,
-                   String[] additionalCategoryIds, int maxSentences, int maxErrors, File languageModelDir, Pattern filter) throws IOException {
+                   String[] additionalCategoryIds, int maxSentences, int maxErrors, File languageModelDir, Pattern filter, 
+                   boolean keepMarkup) throws IOException {
     final Language lang = Languages.getLanguageForShortName(langCode);
     final MultiThreadedJLanguageTool languageTool = new MultiThreadedJLanguageTool(lang);
     if (languageModelDir != null) {

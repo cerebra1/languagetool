@@ -19,6 +19,7 @@
 package org.languagetool.dev.dumpcheck;
 
 import org.languagetool.Language;
+import org.languagetool.dev.wikipedia.PlainTextMapping;
 import org.languagetool.dev.wikipedia.SwebleWikipediaTextFilter;
 import org.languagetool.tokenizers.Tokenizer;
 
@@ -27,6 +28,7 @@ import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.events.XMLEvent;
+
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +46,7 @@ import java.util.regex.Pattern;
  */
 public class WikipediaSentenceSource extends SentenceSource {
 
-  private static final boolean ONLY_ARTICLES = false;
+  private static final boolean ONLY_ARTICLES = true;
   private static final String ARTICLE_NAMESPACE = "0";
   
   private final SwebleWikipediaTextFilter textFilter = new SwebleWikipediaTextFilter();
@@ -64,7 +66,7 @@ public class WikipediaSentenceSource extends SentenceSource {
   /** @since 3.0 */
   public WikipediaSentenceSource(InputStream xmlInput, Language language, Pattern filter) {
     super(language, filter);
-    textFilter.enableMapping(false);  // improves performance
+    textFilter.enableMapping(true);  // improves performance
     try {
       XMLInputFactory factory = XMLInputFactory.newInstance();
       reader = factory.createXMLEventReader(xmlInput);
@@ -95,7 +97,8 @@ public class WikipediaSentenceSource extends SentenceSource {
       }
       WikipediaSentence wikiSentence = sentences.remove(0);
       String url = "http://" + language.getShortName() + ".wikipedia.org/wiki/" + wikiSentence.title;
-      return new Sentence(wikiSentence.sentence, getSource(), wikiSentence.title, url, wikiSentence.articleCount);
+      return new Sentence(wikiSentence.sentence, getSource(), wikiSentence.title, url, wikiSentence.articleCount, 
+          wikiSentence.mapping, wikiSentence.markuptext);
     } catch (XMLStreamException e) {
       throw new RuntimeException(e);
     }
@@ -148,12 +151,19 @@ public class WikipediaSentenceSource extends SentenceSource {
         redirectSkipCount++;
         return;
       }
+      
+      /* Add the whole article without tokenizing sentences */
+      final PlainTextMapping mapping = textFilter.filter(sb.toString());
+      final String textToCheck = mapping.getPlainText();
+      sentences.add(new WikipediaSentence(textToCheck, title, articleCount, mapping, sb.toString()));
+      
+      /*
       String textToCheck = textFilter.filter(sb.toString()).getPlainText();
       for (String sentence : sentenceTokenizer.tokenize(textToCheck)) {
         if (acceptSentence(sentence)) {
           sentences.add(new WikipediaSentence(sentence, title, articleCount));
         }
-      }
+      }*/
     } catch (Exception e) {
       System.err.println("Could not extract text, skipping document: " + e + ", full stacktrace follows:");
       e.printStackTrace();
@@ -164,10 +174,14 @@ public class WikipediaSentenceSource extends SentenceSource {
     final String sentence;
     final String title;
     final int articleCount;
-    WikipediaSentence(String sentence, String title, int articleCount) {
+    final PlainTextMapping mapping;
+    final String markuptext;
+    WikipediaSentence(String sentence, String title, int articleCount, PlainTextMapping mapping, String markuptext) {
       this.sentence = sentence;
       this.title = title;
       this.articleCount = articleCount;
+      this.mapping = mapping;
+      this.markuptext = markuptext;
     }
   }
 }

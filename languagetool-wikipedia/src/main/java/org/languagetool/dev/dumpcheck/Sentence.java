@@ -18,6 +18,8 @@
  */
 package org.languagetool.dev.dumpcheck;
 
+import org.languagetool.dev.wikipedia.PlainTextMapping;
+
 /**
  * A single sentence to be indexed/checked.
  * @since 2.4 (public since 2.8)
@@ -29,6 +31,8 @@ public class Sentence {
   private final String title;
   private final String url;
   private final int articleCount;
+  private final PlainTextMapping mapping;
+  private final String markuptext;
 
   Sentence(String sentence, String source, String title, String url, int articleCount) {
     this.sentence = sentence.trim();
@@ -36,6 +40,19 @@ public class Sentence {
     this.title = title;
     this.url = url;
     this.articleCount = articleCount;
+    this.mapping = null;
+    this.markuptext = "";
+  }
+  
+  Sentence(String sentence, String source, String title, String url, int articleCount, PlainTextMapping mapping, 
+      String markuptext) {
+    this.sentence = sentence.trim();
+    this.source = source;
+    this.title = title;
+    this.url = url;
+    this.articleCount = articleCount;
+    this.mapping = mapping;
+    this.markuptext = markuptext;
   }
 
   public String getText() {
@@ -48,6 +65,14 @@ public class Sentence {
 
   public String getTitle() {
     return title;
+  }
+  
+  public PlainTextMapping getMapping() {
+    return mapping;
+  }
+  
+  public String getMarkuptext() {
+    return markuptext;
   }
 
   String getUrl() {
