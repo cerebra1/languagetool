@@ -27,6 +27,8 @@ import org.languagetool.tools.ContextTools;
 import xtc.tree.Location;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Print rule matches to STDOUT.
@@ -48,7 +50,7 @@ class StdoutHandler extends ResultHandler {
       System.out.println("\nTitle: " + sentence.getTitle());
       for (RuleMatch match : ruleMatches) {
         String output = i + ".) Line " + (match.getLine() + 1) + ", column "
-                + match.getColumn() + ", Rule ID: " + match.getRule().getId();
+            + match.getColumn() + ", Rule ID: " + match.getRule().getId();
         if (match.getRule() instanceof AbstractPatternRule) {
           AbstractPatternRule pRule = (AbstractPatternRule) match.getRule();
           output += "[" + pRule.getSubId() + "]";
@@ -63,16 +65,35 @@ class StdoutHandler extends ResultHandler {
         System.out.println("Suggestion: " + String.join("; ", replacements));
         //}
         String originalError = sentence.getText().substring(match.getFromPos(), match.getToPos());
-        System.out.println("Error: " + originalError);
-                  
+        System.out.println("Error: " + originalError.replace('\n', ' ').replace('\r', ' ').replace('\t', ' '));
+        
+        System.out.println(contextTools.getPlainTextContext(match.getFromPos(), match.getToPos(), sentence.getText()));
+        
         final Location fromPosLocation = sentence.getMapping().getOriginalTextPositionFor(match.getFromPos() + 1);  // not zero-based!
         final Location toPosLocation = sentence.getMapping().getOriginalTextPositionFor(match.getToPos() + 1);  
         final int fromPos = LocationHelper.absolutePositionFor(fromPosLocation, sentence.getMarkuptext());
         final int toPos = LocationHelper.absolutePositionFor(toPosLocation, sentence.getMarkuptext());
         
-        System.out.println(contextTools.getContext(fromPos, toPos, sentence.getMarkuptext()));
         
-        //System.out.println(contextTools.getPlainTextContext(match.getFromPos(), match.getToPos(), sentence.getText()));
+        if (fromPos<0 || toPos<0 || (toPos-fromPos<=0)) {
+          String orgText = sentence.getMarkuptext().replaceAll("\n", " ");
+            
+          Pattern pattern = Pattern.compile(".{0,40}\\Q"+originalError+"\\E.{0,40}");
+          Matcher matcher = pattern.matcher(orgText);
+          
+          if (matcher.find()) {
+            System.out.println("** DOUBTFUL ** "+matcher.group());
+            System.out.println("^^^^");
+          }
+          else {
+            System.out.println("** NOT FOUND **");
+            System.out.println("^^^^");
+          }
+        } else {
+          System.out.println(contextTools.getPlainTextContext(fromPos, toPos, sentence.getMarkuptext()));
+        }
+        
+        
         i++;
         checkMaxErrors(++errorCount);
       }

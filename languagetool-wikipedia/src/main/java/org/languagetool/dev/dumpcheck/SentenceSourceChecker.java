@@ -188,7 +188,9 @@ public class SentenceSourceChecker {
         } catch (DocumentLimitReachedException | ErrorLimitReachedException e) {
           throw e;
         } catch (Exception e) {
-          throw new RuntimeException("Check failed on sentence: " + StringUtils.abbreviate(sentence.getText(), 250), e);
+          //throw new RuntimeException("Check failed on sentence: " + StringUtils.abbreviate(sentence.getText(), 250), e);
+          System.err.println("Check failed on sentence: " + StringUtils.abbreviate(sentence.getText(), 250));
+          System.err.println(e);
         }
       }
     } catch (DocumentLimitReachedException | ErrorLimitReachedException e) {

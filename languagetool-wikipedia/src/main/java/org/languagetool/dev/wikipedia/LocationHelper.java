@@ -77,9 +77,13 @@ public class LocationHelper {
     if (line == location.line && col == location.column) {
       return pos;
     }
-    throw new RuntimeException("Could not find location " + location + " in text. " +
+    System.err.println("Could not find location " + location + " in text. " +
+        "Max line/col was: " + line + "/" + col + ", Content of relevant line (" + location.line + "): '"
+        + relevantLine + "' (" + relevantLine.length() + " chars)");
+    return -1;
+    /*throw new RuntimeException("Could not find location " + location + " in text. " +
             "Max line/col was: " + line + "/" + col + ", Content of relevant line (" + location.line + "): '"
-            + relevantLine + "' (" + relevantLine.length() + " chars)");
+            + relevantLine + "' (" + relevantLine.length() + " chars)");*/
   }
 
   private static boolean isReferenceStart(String text, int i) {
