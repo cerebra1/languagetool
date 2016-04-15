@@ -19,9 +19,12 @@
 package org.languagetool.dev.dumpcheck;
 
 import org.languagetool.Language;
+import org.languagetool.dev.wikipedia.LocationHelper;
 import org.languagetool.rules.RuleMatch;
 import org.languagetool.rules.patterns.AbstractPatternRule;
 import org.languagetool.tools.ContextTools;
+
+import xtc.tree.Location;
 
 import java.util.List;
 
@@ -56,10 +59,20 @@ class StdoutHandler extends ResultHandler {
         msg = msg.replaceAll("</suggestion>", "'");
         System.out.println("Message: " + msg);
         List<String> replacements = match.getSuggestedReplacements();
-        if (!replacements.isEmpty()) {
-          System.out.println("Suggestion: " + String.join("; ", replacements));
-        }
-        System.out.println(contextTools.getPlainTextContext(match.getFromPos(), match.getToPos(), sentence.getText()));
+        //if (!replacements.isEmpty()) {
+        System.out.println("Suggestion: " + String.join("; ", replacements));
+        //}
+        String originalError = sentence.getText().substring(match.getFromPos(), match.getToPos());
+        System.out.println("Error: " + originalError);
+                  
+        final Location fromPosLocation = sentence.getMapping().getOriginalTextPositionFor(match.getFromPos() + 1);  // not zero-based!
+        final Location toPosLocation = sentence.getMapping().getOriginalTextPositionFor(match.getToPos() + 1);  
+        final int fromPos = LocationHelper.absolutePositionFor(fromPosLocation, sentence.getMarkuptext());
+        final int toPos = LocationHelper.absolutePositionFor(toPosLocation, sentence.getMarkuptext());
+        
+        System.out.println(contextTools.getContext(fromPos, toPos, sentence.getMarkuptext()));
+        
+        //System.out.println(contextTools.getPlainTextContext(match.getFromPos(), match.getToPos(), sentence.getText()));
         i++;
         checkMaxErrors(++errorCount);
       }
