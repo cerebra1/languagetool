@@ -159,7 +159,7 @@ public class SentenceSourceChecker {
       System.out.println("*** NOTE: only sentences that match regular expression '" + filter + "' will be checked");
     }
     activateAdditionalCategories(additionalCategoryIds, languageTool);
-    disableSpellingRules(languageTool);
+    //disableSpellingRules(languageTool);
     System.out.println("Working on: " + StringUtils.join(fileNames, ", "));
     System.out.println("Sentence limit: " + (maxSentences > 0 ? maxSentences : "no limit"));
     System.out.println("Error limit: " + (maxErrors > 0 ? maxErrors : "no limit"));

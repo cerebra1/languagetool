@@ -968,6 +968,16 @@ public class JLanguageTool {
                   + StringUtils.abbreviate(analyzedSentence.toTextString(), 200) + "'", e);
         }
       }
+      
+      //annotate total number of errors per sentence
+      if (ruleMatches.size() > 0) {
+        for (RuleMatch r : ruleMatches) {
+          List<String> replacements = r.getSuggestedReplacements();
+          replacements.add("ERRORS_PER_SENTENCE_"+String.format("%03d", ruleMatches.size()));
+          r.setSuggestedReplacements(replacements);
+        }     
+      }
+      
       return ruleMatches;
     }
 
