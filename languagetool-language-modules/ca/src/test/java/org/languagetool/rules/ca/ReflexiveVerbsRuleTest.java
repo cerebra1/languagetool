@@ -46,16 +46,20 @@ public class ReflexiveVerbsRuleTest {
   @Test
   public void testRule() throws IOException { 
 
+    
+    assertCorrect("se’ls acaben d’emportar un familiar");
+    assertCorrect("Has d'emportar-t'hi això.");
+    assertCorrect("Em duràs un mocador de seda del teu color");
+    
     //TODO: se'n vola / s'envola
     // correct sentences:
     //TODO: assertCorrect("Mai se m'hauria ocorregut vanagloriar-me");
     assertCorrect("s’està esforçant");
     assertCorrect("m'he estat queixant");
     assertCorrect("se'n va començar a ressentir");
-    assertCorrect("Me’n pensava endur més de mil");
     assertCorrect("ja se'n comença a adonar");
     assertCorrect("s'acaba d'adonar que ha escrit poemes");
-    assertCorrect("se’ls acaben d’emportar un familiar");
+    assertCorrect("Me’n pensava endur més de mil");
     assertCorrect("i ens l'acabem empassant.");
     assertCorrect("se’l va acabar enduent");
     assertCorrect("Ella se sol endur les garrotades.");
@@ -113,19 +117,15 @@ public class ReflexiveVerbsRuleTest {
     assertCorrect("cosa que li permetia, sense haver-s'hi d'esforçar gaire, seguir entre classe i classe");
     assertCorrect("fins que no em vingui la inspiració");
     assertCorrect("Si no ho trobes bé, vés-te a queixar al director");
-    
     assertCorrect("potser em vindria de gust fer un mossec");
     assertCorrect("li ho va fer empassar de cop");
     //assertCorrect("del lloc on m'havia caigut"); correcte o incorrecte segons quin sigui el subjecte
     assertCorrect("i matar-se caient de més de vuitanta peus d'altura");
-    assertCorrect("Deixa de portar-me la contra.");
-    //assertIncorrect("No deixis de portar-te el menjar.");
     assertCorrect("quan ja es tornava a envolar li va caure aquest");
     assertCorrect("Van fer agenollar els presos");
     assertCorrect("Deixa'm dir-t'ho a l'orella");
     assertCorrect("Em deixes demanar-te una cosa?");
     assertCorrect("havien fet desbocar un cavall sense brida");
-    assertCorrect("quan el vent ja m'hauria portat les rondalles");
     assertCorrect("Llavors m'oloro les mans"); 
     assertCorrect("Hem de poder-nos queixar");
     assertCorrect("Ens hem de poder queixar");
@@ -134,13 +134,10 @@ public class ReflexiveVerbsRuleTest {
     assertCorrect("L'instant que havia trigat a fer-lo li havia impedit defensar-se.");
     assertCorrect("quan ja s’olorava en l’aire la primavera");
     assertCorrect("que la vergonya em pugés a les galtes");
-    //assertCorrect("per on volia portar-me el mestre");
-    //assertCorrect("¿De què m’havia d’haver adonat?");
     //assertCorrect("i et costa empassar-te la saliva.");
     //assertCorrect("la recança que em feia haver-me d’allunyar d’ella");
     assertCorrect("En Feliu em fa dir-te que el dispensis");
     assertCorrect("i que ja em vindria la son");
-    assertCorrect("La mort del pare m’havia portat la imatge d’aquests morts");
     assertCorrect("Una onada de foc em pujava del pit a la cara.");
 
     assertIncorrect("Ens vàrem marxar amb tren.");
@@ -149,7 +146,6 @@ public class ReflexiveVerbsRuleTest {
     assertCorrect("el qui amb mi delira està lliure");
     assertCorrect("per venir-vos a veure ");
     assertCorrect("No li ho ensenyis, que el faràs delir.");
-    assertCorrect("per a portar-te aigua");
     assertCorrect("que no em costi d'anar al llit");
     assertCorrect("el senyor Colomines s'anà progressivament reposant");
     assertCorrect("en sentir els plors s'encongeix automàticament,");
@@ -161,7 +157,6 @@ public class ReflexiveVerbsRuleTest {
     assertCorrect("fins que se'n va haver desempallegat");
     assertCorrect("per haver-se deixat endur per l'orgull");
     assertCorrect("i de venir-vos a trobar");
-    assertCorrect("el sol s'havia post, li anaven portant tots els malalts");
     assertCorrect("que no em caigui la casa");
     assertCorrect("que no em caigui al damunt res");
     assertCorrect("Em queia bé.");
@@ -178,24 +173,14 @@ public class ReflexiveVerbsRuleTest {
     assertCorrect("Zheng, adonant-se que gairebé totes les forces singaleses");
     assertCorrect("que s'havien anat instal·lant");
     assertCorrect("gràcies a la presència del Riu Set s'hi alberga una gran arboreda amb taules");
-    assertCorrect("no fa gaires anys també s'hi portaven alguns animals");
     assertCorrect("el sòlid es va \"descomponent\".");
     assertCorrect("la divisió s'ha d'anar amb cura per evitar ambigüitats");
     assertCorrect("la senyera s'ha de baixar");
     assertCorrect("Es van témer assalts a altres edificis de la CNT ");
-    assertCorrect("que Joan em dugués el mocador");
-    //assertCorrect("que Joan es dugués el mocador"); // dubtós
-    assertCorrect("em duràs un mocador de seda del teu color");
     assertCorrect("El va deixar per a dedicar-se a la música");
-    assertCorrect("Hermes s'encarregava de dur les ànimes que acabaven de morir a l'Inframón");
-    assertCorrect("aquest nom és poc adequat ja que es poden portar les propostes de l'escalada clàssica");
-    //assertCorrect("totes les comissions dels països vencedors en les guerres napoleòniques es van portar els seus propis cuiners");
     assertCorrect("en fer-lo girar se'n podia observar el moviment");
     assertCorrect("el segon dia es duien a terme les carreres individuals");
     assertCorrect("Normalment no es duu un registre oficial extern");
-    assertCorrect("Ens portem força bé");
-    assertCorrect("Hem de portar-nos bé");
-    assertCorrect("Ells es porten tres anys");
     assertCorrect("Fan que em malfiï.");
     assertCorrect("Em fan malfiar.");
     assertCorrect("El fan agenollar.");
@@ -211,7 +196,6 @@ public class ReflexiveVerbsRuleTest {
     assertCorrect("es queixa");
     assertCorrect("es va queixant");
     assertCorrect("es va queixar");
-    assertCorrect("has d'emportar-t'hi");
     assertCorrect("has de poder-te queixar");
     assertCorrect("t'has de poder queixar");
     assertCorrect("havent-se queixat");
@@ -314,11 +298,6 @@ public class ReflexiveVerbsRuleTest {
     assertIncorrect("Ada Colau s'ha crescut molt");
     assertIncorrect("Ha arribat l'hora de saltar-se la legalitat.");
     assertIncorrect("Delia per menjar-ne.");
-    assertIncorrect("Ells es volen dur les ànimes a l'Inframón");
-    assertIncorrect("Joan es va portar el carretó");
-    assertIncorrect("en aquesta vida ens portem moltes sorpreses");
-    assertIncorrect("Ens hem portat massa material al campament");
-    assertIncorrect("Hem de dur-nos tot això.");
     assertIncorrect("L'has fet tornar-se vermell.");
     assertIncorrect("El fan agenollar-se.");
     assertIncorrect("Fes-lo agenollar-se.");

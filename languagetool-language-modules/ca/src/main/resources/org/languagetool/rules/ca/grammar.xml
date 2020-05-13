@@ -52646,7 +52646,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rulegroup>
     </category>
     <category id="REFLEXIVE_VERBS" name="verbs reflexius">
-        <rulegroup id="DONAR_COMPTE" name="*donar-se compte/adonar-se">
+        <rule id="DONAR_COMPTE" name="*donar-se compte/adonar-se">
             <antipattern>
                 <token inflected="yes">es</token>
                 <token min="0" max="6" postag="[VSP].*" postag_regexp="yes"><exception inflected="yes">donar</exception></token>
@@ -52655,26 +52655,88 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token skip="1" regexp="yes">a|en</token>
                 <token regexp="yes">ple|plenari|congrés|ajuntament|conselleria|ministeri|ministre|govern|conseller|alcalde|batl?le|senat|superior|hisenda|direcció|director|president|presidència</token>
             </antipattern>
+            <pattern>
+                <and>
+                    <token inflected="yes" skip="6">donar</token>
+                    <token postag="_reflexiu"></token>
+                </and>
+                <token>compte</token>
+            </pattern>
+            <message>'Donar-se compte' és una expressió incorrecta si equival a 'adonar-se'; és correcta si vol dir 'retre compte'.</message>
+            <suggestion><match no="1" postag="(V.*)" postag_regexp="yes" postag_replace="$1" include_skipped="all">adonar</match></suggestion>
+            <example correction="adonat">Te n'has <marker>donat compte</marker>?</example>
+            <example correction="adonar a vegades">Se n'hauria hagut de <marker>donar a vegades compte</marker>?</example>
+            <example correction="adonant-nos, d'alguna manera,">Vam acabar <marker>donant-nos, d'alguna manera, compte</marker> del que passava.</example>
+            <example correction="adonar">Es va <marker>donar compte</marker> de l'error.</example>
+            <example correction="adonar-te">Vas <marker>donar-te compte</marker> de l'error.</example>
+            <example correction="adona">Joan es <marker>dóna compte</marker> de l'error.</example>
+            <example correction="adonar">Ens vàrem tornar a <marker>donar compte</marker> de l'error.</example>
+            <example>D'aquest Decret se n'ha donat compte al Ple de l'Ajuntament</example>
+            <example>Encara em cal donar compte d'un altre recull.</example>
+            <example>Michael Kirby ens en dóna compte a Anàlisi estructural.</example>
+            <example>¿De què m’havia d’haver adonat?</example>
+        </rule>
+        <rulegroup id="PORTAR_EMPORTAR" name="portar-se/emportar-se">
+            <antipattern>
+                <token inflected="yes" regexp="yes">portar|dur</token>
+                <token min="0" max="2" postag="PP.*|RG" postag_regexp="yes"><exception>bé</exception></token>
+                <token>bé</token>
+            </antipattern>
+            <antipattern>
+                <token inflected="yes" regexp="yes">portar|dur</token>
+                <token min="1" max="4" postag="D[NI].*" postag_regexp="yes"/>
+                <token inflected="yes" regexp="yes">&unitats_temps;</token>
+            </antipattern>
+            <antipattern>
+                <token>s'</token>
+                <token>hi</token>
+                <token min="0" max="6" postag="[VSP].*" postag_regexp="yes"><exception inflected="yes" regexp="yes">portar|dur</exception></token>
+                <token inflected="yes" regexp="yes">portar|dur</token>
+            </antipattern>
+            <antipattern>
+                <token inflected="yes">es<exception postag="_es_personal"/></token>
+                <token min="0" max="6" postag="[VSP].*" postag_regexp="yes"><exception inflected="yes" regexp="yes">portar|dur</exception></token>
+                <token inflected="yes" regexp="yes">portar|dur</token>
+            </antipattern>
             <rule>
                 <pattern>
                     <and>
-                        <token inflected="yes" skip="6">donar</token>
+                        <token inflected="yes">portar</token>
                         <token postag="_reflexiu"></token>
                     </and>
-                    <token>compte</token>
                 </pattern>
-                <message>'Donar-se compte' és una expressió incorrecta si equival a 'adonar-se'; és correcta si vol dir 'retre compte'.</message>
-                <suggestion><match no="1" postag="(V.*)" postag_regexp="yes" postag_replace="$1" include_skipped="all">adonar</match></suggestion>
-                <example correction="adonat">Te n'has <marker>donat compte</marker>?</example>
-                <example correction="adonar a vegades">Se n'hauria hagut de <marker>donar a vegades compte</marker>?</example>
-                <example correction="adonant-nos, d'alguna manera,">Vam acabar <marker>donant-nos, d'alguna manera, compte</marker> del que passava.</example>
-                <example correction="adonar">Es va <marker>donar compte</marker> de l'error.</example>
-                <example correction="adonar-te">Vas <marker>donar-te compte</marker> de l'error.</example>
-                <example correction="adona">Joan es <marker>dóna compte</marker> de l'error.</example>
-                <example correction="adonar">Ens vàrem tornar a <marker>donar compte</marker> de l'error.</example>
-                <example>D'aquest Decret se n'ha donat compte al Ple de l'Ajuntament</example>
-                <example>Encara em cal donar compte d'un altre recull.</example>
-                <example>Michael Kirby ens en dóna compte a Anàlisi estructural.</example>         
+                <message>Probablement cal dir <suggestion><match no="1" regexp_match="^(.*)$" regexp_replace="em$1" case_conversion="alllower"/></suggestion>.</message>
+                <example correction="emportar">Joan es va <marker>portar</marker> el carretó.</example>
+                <example correction="emportar">Ells es volen <marker>portar</marker> les ànimes a l'inframón.</example>
+                <example correction="emportem">En aquesta vida ens <marker>portem</marker> moltes sorpreses.</example>
+                <example correction="emportat">Ens hem <marker>portat</marker> massa material al campament.</example>
+                <example correction="emportar">Hem de <marker>portar</marker>-nos tot això.</example>
+                <example>El nom és poc adequat, ja que es poden portar les propostes clàssiques.</example>
+                <example>Li anaven portant tots els malalts.</example>
+                <example>Ells es porten tres anys.</example>
+                <example>Ens portem força bé.</example>
+                <example>Hem de portar-nos bé.</example>
+                <example>Hermes s'encarregava de portar les ànimes que acabaven de morir a l'inframón.</example>
+                <example>No fa gaires anys també s'hi portaven alguns animals.</example>
+                <example>que Joan em portés el mocador</example>
+                <example correction="emportés" type="triggers_error" reason="ambiguous">que Joan es <marker>portés</marker> el mocador</example>
+                <example correction="emportar" type="triggers_error" reason="ambiguous">Totes les comissions es van <marker>portar</marker> els seus propis cuiners.</example>
+                <example>Deixa de portar-me la contra.</example>
+                <example>quan el vent ja m'hauria portat les rondalles</example>
+                <example>per on volia portar-me el mestre</example>
+                <example>per a portar-te aigua</example>
+                <example>La mort del pare m’havia portat la imatge.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <and>
+                        <token inflected="yes">dur<exception inflected="yes">durar</exception></token>
+                        <token postag="_reflexiu"></token>
+                    </and>
+                </pattern>
+                <message>Probablement cal dir <suggestion><match no="1" regexp_match="^(.*)$" regexp_replace="en$1" case_conversion="alllower"/></suggestion>.</message>
+                <example correction="endur">Joan es va <marker>dur</marker> el carretó.</example>
+                <example>Em duràs un mocador de seda del teu color.</example>
             </rule>
         </rulegroup>
     </category>
