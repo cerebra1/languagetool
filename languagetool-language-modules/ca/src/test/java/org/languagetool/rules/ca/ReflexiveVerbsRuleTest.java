@@ -144,16 +144,6 @@ public class ReflexiveVerbsRuleTest {
     assertCorrect("Una onada de foc em pujava del pit a la cara.");
 
     assertIncorrect("Ens vàrem marxar amb tren.");
-    //donar-se compte
-    assertCorrect("D'aquest Decret se n'ha donat compte al Ple de l'Ajuntament");
-    assertCorrect("Encara em cal donar compte d'un altre recull");
-    assertCorrect("Michael Kirby ens dóna compte a Anàlisi estructural");
-    //assertCorrect("tractant-se de cas d'urgència i donant-se compte al Ple de l'Ajuntament");
-    assertIncorrect("Ell es va donar compte de l'error");
-    //assertIncorrect("Es va donar compte de l'error"); //cas dubtós
-    assertIncorrect("Joan es va donar compte de l'error");
-    assertIncorrect("Algú se n'hauria de donar compte.");
-    assertIncorrect("Vas donar-te compte de l'error");
     assertIncorrect("llavors comenten discretament l'afer i es callen, tanmateix, els noms");
     //
     assertCorrect("el qui amb mi delira està lliure");

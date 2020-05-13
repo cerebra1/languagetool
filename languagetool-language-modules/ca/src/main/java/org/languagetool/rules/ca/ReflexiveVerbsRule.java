@@ -207,29 +207,7 @@ public class ReflexiveVerbsRule extends Rule {
         continue loop;
       
       final String token = tokens[i].getToken().toLowerCase();     
-      
-      //COMPROVA: *donar-se compte/adonar-se
-      if (i+2<tokens.length
-          && tokens[i].hasLemma("donar")
-          && (tokens[i+1].getToken().equals("compte") || tokens[i+2].getToken().equals("compte"))) {        
-        if (!isThereReflexivePronoun(tokens, i)) 
-          continue loop;
-                
-        //excep. Frase impersonal
-        // És frase impersonal si hi ha el pronom 'es', llevat que es pugui identificar un subjecte "personal"
-        if (isPhraseImpersonalVerbS(tokens, i) )  
-          continue loop;
-        
-        // the rule matches
-        final String msg = "'Donar-se compte' és una expressió incorrecta si equival a 'adonar-se'; és correcta si vol dir 'retre compte'.";
-        int endPosition = 1;
-        if (tokens[i+2].getToken().equals("compte")) {
-          endPosition = 2;
-        }
-        final RuleMatch ruleMatch = new RuleMatch(this, sentence, tokens[i].getStartPos(),
-            tokens[i + endPosition].getEndPos(), msg, "Possible error");
-        ruleMatches.add(ruleMatch);
-      }
+   
       
       // COMPROVA: portar-se/emportar-se
       if (i+2<tokens.length

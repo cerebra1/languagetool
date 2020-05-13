@@ -12797,20 +12797,88 @@ Copyright (C) 2012 Jaume Ortolà i Font
         <disambig action="add"><wd pos="mot_foraster"></wd></disambig>
         </rule>
         </rulegroup> -->
+    <rule id="verb_reflexiu_simple" name="verb acompanyat de pronom reflexiu">
+        <pattern>
+            <unify>
+                <feature id="nombre"/>
+                <feature id="persona"/>
+                <token postag="P0.0.*" postag_regexp="yes"/>
+                <unify-ignore><token min="0" inflected="yes" regexp="yes">hi|en</token></unify-ignore>
+                <marker>
+                    <token postag="V.[SI].*" postag_regexp="yes"/>
+                </marker>
+            </unify>
+        </pattern>
+        <disambig action="add"><wd pos="_reflexiu"></wd></disambig>
+    </rule>
     <rulegroup id="verb_reflexiu" name="verb acompanyat de pronom reflexiu">
+        <antipattern>
+            <token inflected="yes">haver</token>
+            <token><exception inflected="yes">de</exception><exception postag="V.P.*" postag_regexp="yes"/></token>
+        </antipattern>
+        <antipattern>
+            <token inflected="yes" regexp="yes">tornar|començar</token>
+            <token><exception>a</exception></token>
+        </antipattern>
+        <antipattern>
+            <token regexp="yes" inflected="yes">a|de</token>
+            <token><exception postag_regexp="yes" postag="V.N.*"></exception></token>
+        </antipattern>
+        <antipattern>
+            <token inflected="yes">acabar</token>
+            <token><exception postag="V.G.*" postag_regexp="yes"/></token>
+        </antipattern>
         <rule>
             <pattern>
                 <unify>
                     <feature id="nombre"/>
                     <feature id="persona"/>
-                    <token postag="P0.0.*" postag_regexp="yes" skip="1"><exception scope="next" negate_pos="yes" postag="V.[SI].*|PP3CN000|_GV_|_perfet|SENT_END" postag_regexp="yes"/></token>
-                    <marker>
-                        <token postag="V.[SI].*" postag_regexp="yes"/>
-                    </marker>
+                    <token postag="P0.0.*" postag_regexp="yes"/>
+                    <unify-ignore><token min="0" inflected="yes" regexp="yes">hi|en</token></unify-ignore>
+                    <token postag="V.[SI].*" postag_regexp="yes" inflected="yes" regexp="yes">anar|haver|pensar|intentar|soler|deure|poder|voler|tornar|començar|acabar</token>    
+                </unify>
+                <token postag="V.[NP].*|SPS00" postag_regexp="yes" inflected="yes" regexp="yes" min="0" max="5">haver|pensar|intentar|soler|deure|poder|voler|tornar|començar|acabar|a|de</token>
+                <marker>
+                    <token postag="V.[NGP].*" postag_regexp="yes"><exception regexp="yes" inflected="yes">haver|anar|pensar|intentar|soler|deure|poder|voler|tornar|començar|acabar|a|de</exception></token>
+                </marker>
+            </pattern>
+            <disambig action="add"><wd pos="_reflexiu"></wd></disambig>
+        </rule>
+        <rule>
+            <pattern>
+                <unify>
+                    <feature id="nombre"/>
+                    <feature id="persona"/>               
+                    <token postag="V.[SI].*" postag_regexp="yes" inflected="yes" regexp="yes">anar|haver|pensar|intentar|soler|deure|poder|voler|tornar|començar|acabar</token>    
+                    <unify-ignore>
+                        <token postag="V.[NP].*|SPS00" postag_regexp="yes" inflected="yes" regexp="yes" min="0" max="5">haver|pensar|intentar|soler|deure|poder|voler|tornar|començar|acabar|a|de</token>
+                        <marker>
+                            <token postag="V.[NG].*" postag_regexp="yes"><exception regexp="yes" inflected="yes">haver|anar|pensar|intentar|soler|deure|poder|voler|tornar|començar|acabar|a|de</exception></token>
+                        </marker>
+                    </unify-ignore>
+                    <token postag="P0.0.*" postag_regexp="yes" spacebefore="no"/>
                 </unify>
             </pattern>
             <disambig action="add"><wd pos="_reflexiu"></wd></disambig>
         </rule>
+        <rule>
+            <pattern>
+                <unify>
+                    <feature id="nombre"/>
+                    <feature id="persona"/>               
+                    <token postag="V.[SI].*" postag_regexp="yes" inflected="yes" regexp="yes">anar</token>    
+                    <unify-ignore>
+                        <marker>
+                            <token postag="V.[NG].*" postag_regexp="yes"/>
+                        </marker>
+                    </unify-ignore>
+                    <token postag="P0.0.*" postag_regexp="yes" spacebefore="no"/>
+                </unify>
+            </pattern>
+            <disambig action="add"><wd pos="_reflexiu"></wd></disambig>
+        </rule>
+    </rulegroup>
+    <rulegroup id="peronsa13" name="persona 1/3">
         <rule>
             <pattern>
                 <marker>

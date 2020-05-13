@@ -52645,4 +52645,37 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             </rule>
         </rulegroup>
     </category>
+    <category id="REFLEXIVE_VERBS" name="verbs reflexius">
+        <rulegroup id="DONAR_COMPTE" name="*donar-se compte/adonar-se">
+            <antipattern>
+                <token inflected="yes">es</token>
+                <token min="0" max="6" postag="[VSP].*" postag_regexp="yes"><exception inflected="yes">donar</exception></token>
+                <token inflected="yes">donar</token>
+                <token>compte</token>
+                <token skip="1" regexp="yes">a|en</token>
+                <token regexp="yes">ple|plenari|congrés|ajuntament|conselleria|ministeri|ministre|govern|conseller|alcalde|batl?le|senat|superior|hisenda|direcció|director|president|presidència</token>
+            </antipattern>
+            <rule>
+                <pattern>
+                    <and>
+                        <token inflected="yes" skip="6">donar</token>
+                        <token postag="_reflexiu"></token>
+                    </and>
+                    <token>compte</token>
+                </pattern>
+                <message>'Donar-se compte' és una expressió incorrecta si equival a 'adonar-se'; és correcta si vol dir 'retre compte'.</message>
+                <suggestion><match no="1" postag="(V.*)" postag_regexp="yes" postag_replace="$1" include_skipped="all">adonar</match></suggestion>
+                <example correction="adonat">Te n'has <marker>donat compte</marker>?</example>
+                <example correction="adonar a vegades">Se n'hauria hagut de <marker>donar a vegades compte</marker>?</example>
+                <example correction="adonant-nos, d'alguna manera,">Vam acabar <marker>donant-nos, d'alguna manera, compte</marker> del que passava.</example>
+                <example correction="adonar">Es va <marker>donar compte</marker> de l'error.</example>
+                <example correction="adonar-te">Vas <marker>donar-te compte</marker> de l'error.</example>
+                <example correction="adona">Joan es <marker>dóna compte</marker> de l'error.</example>
+                <example correction="adonar">Ens vàrem tornar a <marker>donar compte</marker> de l'error.</example>
+                <example>D'aquest Decret se n'ha donat compte al Ple de l'Ajuntament</example>
+                <example>Encara em cal donar compte d'un altre recull.</example>
+                <example>Michael Kirby ens en dóna compte a Anàlisi estructural.</example>         
+            </rule>
+        </rulegroup>
+    </category>
 </rules>
