@@ -205,42 +205,7 @@ public class ReflexiveVerbsRule extends Rule {
       //ignore no verbs
       if (!matchPostagRegexp(tokens[i], VERB) || matchPostagRegexp(tokens[i], NO_VERB))
         continue loop;
-      
-      final String token = tokens[i].getToken().toLowerCase();     
-   
-      
-      // COMPROVA: portar-se/emportar-se
-      if (i+2<tokens.length
-          && matchLemmaList(tokens[i], verbsPortarDur)
-          && !(matchPostagRegexp(tokens[i], VERB_INF) && isThereBefore(tokens,i,LEMMA_PREP_A_PER,POSTAG_PREPOSICIO))
-          && !hasVerbMultipleReadings(tokens[i]) //em duràs un mocador
-          && isThereReflexivePronoun(tokens, i) // ens portem, ens hem de portar
-          && isThereAfterWithoutPreposition(tokens, i, POSTAG_CD)
-          && !isThereVerbBeforeList(tokens,i,verbsDeixarFer) // es deixen portar
-          && !(isThereVerbBeforeList(tokens,i,verbsPotencialmentPronominals) && !isThereVerbBeforeList(tokens,i,excepVerbsPotencialmentPronominals))
-          && !matchPostagRegexp(tokens[i+1], POSTAG_ADVERBI) // es porten bé
-          && !matchPostagRegexp(tokens[i+2], POSTAG_ADVERBI) // hem de portar-nos bé
-          && !matchLemmaRegexp(tokens[i+2], ANYMESDIA) // ens portem tres anys
-          && !isPhraseImpersonalVerbSP(tokens, i) // Es va portar l'any passat
-          ) {
-        if (isVerbNumberPerson(tokens,i,VERB_3S)  //el vent m'ha portat les rondalles 
-            && !isThereBefore(tokens, i, LEMMA_ES, POSTAG_ES)
-            && isThereSubject3SBefore(tokens,i,TRENCA_COMPTE))
-          continue loop;
-        if (isThereNearLemma (tokens, i, partsCos))
-          continue loop;
-        
-        // the rule matches
-        String suggestion;
-        if (tokens[i].hasLemma("portar")) {suggestion = "em"+token; }
-          else if (token.equalsIgnoreCase("du")) {suggestion ="endú"; }
-          else {suggestion= "en"+token; }
-        final String msg="¿Volíeu dir <suggestion>"+suggestion+"</suggestion>?";
-        final RuleMatch ruleMatch = new RuleMatch(this, sentence,
-            tokens[i].getStartPos(), tokens[i].getEndPos(), msg, "Possible error");
-        ruleMatches.add(ruleMatch);    
-        continue loop;
-      }
+  
       
       //COMPROVA: PERÍFRASI AMB VERB PRONOMINAL: el fan *agenollar-se/agenollar
       if (i+1<tokens.length 
