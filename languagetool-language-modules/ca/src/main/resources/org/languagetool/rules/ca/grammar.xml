@@ -52739,5 +52739,41 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>Em duràs un mocador de seda del teu color.</example>
             </rule>
         </rulegroup>
+        <rulegroup id="EL_FAN_AGENOLLAR" name="el fan agenollar*(-se)">
+            <rule>
+                <pattern>
+                    <token postag="PP3..A00|PP3CP000|P0.*" postag_regexp="yes"><exception regexp="yes">[-'].*</exception></token>
+                    <token min="0" max="2" postag="V.[SI].*|SPS00" postag_regexp="yes" inflected="yes" regexp="yes">anar|haver|pensar|intentar|soler|deure|poder|voler|de</token>
+                    <token regexp="yes" inflected="yes">fer|deixar</token>
+                    <marker>
+                       <token postag="V.N.*" postag_regexp="yes"/>
+                        <token postag="P0.*" postag_regexp="yes" spacebefore="no"/>
+                    </marker>
+                </pattern>
+                <message>En aquesta perífrasi verbal el pronom reflexiu posterior és redundant.</message>
+                <suggestion>\4</suggestion>
+                <example correction="tornar">L'has fet <marker>tornar-se</marker> vermell.</example>
+                <example correction="agenollar">El fan <marker>agenollar-se</marker>.</example>
+                <example correction="agenollar">Els fan <marker>agenollar-se</marker>.</example>
+                <example correction="agenollar">L'hauràs de fer <marker>agenollar-se</marker>.</example>
+                <example correction="ufanejar">L'havia fet <marker>ufanejar-se</marker> obertament</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token postag="V.[MNG].*" postag_regexp="yes" regexp="yes" inflected="yes">fer|deixar</token>
+                    <token postag="PP3..A00|PP3CP000|P0.*" postag_regexp="yes" spacebefore="no"/>
+                    <marker>
+                        <token postag="V.N.*" postag_regexp="yes"/>
+                        <token postag="P0.*" postag_regexp="yes" spacebefore="no"/>
+                    </marker>
+                </pattern>
+                <message>En aquesta perífrasi verbal el pronom reflexiu posterior és redundant.</message>
+                <suggestion>\3</suggestion>
+                <example correction="agenollar">Fes-lo <marker>agenollar-se</marker>.</example>
+                <example correction="agenollar">Fes-los <marker>agenollar-se</marker>.</example>
+                <example correction="agenollar">Va acabar fent-lo <marker>agenollar-se</marker>.</example>
+                <example correction="agenollar">Deixa'm <marker>agenollar-me</marker>.</example>
+            </rule>
+        </rulegroup>
     </category>
 </rules>
