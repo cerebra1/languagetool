@@ -205,24 +205,6 @@ public class ReflexiveVerbsRule extends Rule {
       //ignore no verbs
       if (!matchPostagRegexp(tokens[i], VERB) || matchPostagRegexp(tokens[i], NO_VERB))
         continue loop;
-  
-      
-      //COMPROVA: PERÍFRASI AMB VERB PRONOMINAL: el fan *agenollar-se/agenollar
-      if (i+1<tokens.length 
-          && matchPostagRegexp(tokens[i], VERB_INF)
-          && !matchPostagRegexp(tokens[i - 1], POSTAG_PREPOSICIO) 
-          && isThereVerbBeforeListLimit(tokens,i, verbsDeixarFer,3)
-          && isThereRedundantPronoun(tokens,i)
-          && isThereBefore(tokens, i, LEMMA_PRONOM_CD, POSTAG_PRONOM_CD)  
-          && matchRegexp(tokens[i + 1].getToken(), REFLEXIU_POSPOSAT) ) {
-          // the rule matches
-          final String msg = "En aquesta perífrasi verbal el pronom reflexiu posterior és redundant.";
-          final RuleMatch ruleMatch = new RuleMatch(this, sentence,
-              tokens[i+1].getStartPos(), tokens[i+1].getStartPos()
-                  + tokens[i+1].getToken().length(), msg, "Pronom redundant");
-          ruleMatches.add(ruleMatch);
-          continue loop;
-      }
 
       //VERBS PRONOMINALS: Cal que hi hagi pronom reflexiu. 
       if (matchLemmaRegexp(tokens[i], VERB_AUTO) || matchLemmaList(tokens[i],verbsPronominals)) {

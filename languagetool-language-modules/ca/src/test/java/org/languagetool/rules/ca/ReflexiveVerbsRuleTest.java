@@ -49,7 +49,6 @@ public class ReflexiveVerbsRuleTest {
     
     assertCorrect("se’ls acaben d’emportar un familiar");
     assertCorrect("Has d'emportar-t'hi això.");
-    assertCorrect("Em duràs un mocador de seda del teu color");
     
     //TODO: se'n vola / s'envola
     // correct sentences:
@@ -298,11 +297,6 @@ public class ReflexiveVerbsRuleTest {
     assertIncorrect("Ada Colau s'ha crescut molt");
     assertIncorrect("Ha arribat l'hora de saltar-se la legalitat.");
     assertIncorrect("Delia per menjar-ne.");
-    assertIncorrect("L'has fet tornar-se vermell.");
-    assertIncorrect("El fan agenollar-se.");
-    assertIncorrect("Fes-lo agenollar-se.");
-    assertIncorrect("Deixa'm agenollar-me.");
-    assertIncorrect("l'havia fet ufanejar-se obertament");
     assertIncorrect("un dels pocs moviments que poden fer és intentar pujar-se al carro de la indignació.");
     assertIncorrect("és intentar pujar-se al carro de la indignació.");
     assertIncorrect("Pujar-se al carro de la indignació.");
