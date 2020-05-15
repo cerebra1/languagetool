@@ -72,14 +72,7 @@ public class ReflexiveVerbsRuleTest {
     //assertCorrect("es van agenollar i prosternar");
     //assertCorrect("Una equivocació tan gran no es pot callar.");
     //assertCorrect(" és del tot necessari si no es vol caure en una religió alienant");
-    assertCorrect("Li agrada queixar-se.");
-    assertCorrect("Els agrada queixar-se.");
-    assertCorrect("Ens agrada queixar-se.");
-    assertCorrect("Els animem a queixar-se.");
-    assertCorrect("L'animo a continuar esforçant-se.");
-    assertCorrect("Ens agrada queixar-nos.");
-    assertCorrect("Us agrada queixar-vos.");
-    assertIncorrect("Ens agrada queixar-vos.");
+
     
     assertCorrect("Lorella va a venir"); // used to cause NPE - see #1787
     assertCorrect("Ens animava a queixar-nos.");
@@ -182,45 +175,10 @@ public class ReflexiveVerbsRuleTest {
     assertCorrect("Normalment no es duu un registre oficial extern");
     assertCorrect("Fan que em malfiï.");
     assertCorrect("Em fan malfiar.");
-    assertCorrect("El fan agenollar.");
-    assertCorrect("ens anem a aferrissar");
-    assertCorrect("anem a aferrissar-nos");
-    assertCorrect("ens preparem per a anar");
-    assertCorrect("comencen queixant-se");
-    assertCorrect("comenceu a queixar-vos");
-    assertCorrect("no em podia pas queixar");
-    assertCorrect("em puc queixar");
-    assertCorrect("en teniu prou amb queixar-vos");
-    assertCorrect("ens en podem queixar");
-    assertCorrect("es queixa");
-    assertCorrect("es va queixant");
-    assertCorrect("es va queixar");
-    assertCorrect("has de poder-te queixar");
-    assertCorrect("t'has de poder queixar");
-    assertCorrect("havent-se queixat");
-    assertCorrect("haver-se queixat");
-    assertCorrect("no es va poder emportar");
-    assertCorrect("no has de poder-te queixar");
-    assertCorrect("no has de queixar-te");
-    assertCorrect("no podeu deixar de queixar-vos");
-    assertCorrect("no t'has de queixar");
-    assertCorrect("no us podeu deixar de queixar");
-    assertCorrect("pareu de queixar-vos");
-    assertCorrect("podent abstenir-se");
-    assertCorrect("poder-se queixar");
-    assertCorrect("podeu queixar-vos");
-    assertCorrect("queixa't");
-    assertCorrect("queixant-vos");
-    assertCorrect("queixar-se");
-    assertCorrect("queixeu-vos");
-    assertCorrect("s'ha queixat");
-    assertCorrect("se li ha queixat");
-    assertCorrect("se li queixa");
-    assertCorrect("se li va queixar");
-    assertCorrect("va decidir suïcidar-se");
-    assertCorrect("va queixant-se");
-    assertCorrect("va queixar-se");
-    assertCorrect("va queixar-se-li");
+    
+    
+    
+    
     assertCorrect("Se'n pujà al cel");
     assertCorrect("Se li'n va anar la mà");
     assertCorrect("El nen pot callar");
@@ -296,7 +254,7 @@ public class ReflexiveVerbsRuleTest {
     assertIncorrect("Ada Martínez s'ha crescut molt");
     assertIncorrect("Ada Colau s'ha crescut molt");
     assertIncorrect("Ha arribat l'hora de saltar-se la legalitat.");
-    assertIncorrect("Delia per menjar-ne.");
+    
     assertIncorrect("un dels pocs moviments que poden fer és intentar pujar-se al carro de la indignació.");
     assertIncorrect("és intentar pujar-se al carro de la indignació.");
     assertIncorrect("Pujar-se al carro de la indignació.");
@@ -332,8 +290,7 @@ public class ReflexiveVerbsRuleTest {
     assertIncorrect("Va entrar l'avi que pujava del taller i es va seure.");
     //assertIncorrect("Aleshores es va anar a la ciutat a presentar una queixa.");
     //assertIncorrect("quan es pugen, permeten canviar de feina.");
-    assertIncorrect("havent queixat");
-    assertIncorrect("haver queixat");
+    
     assertIncorrect("les membranes s'han anat fabricat amb materials sintètics"); 
     assertIncorrect("s'han anat fabricat amb materials sintètics");
     assertIncorrect("Holmes i Watson s'han anat d'acampada");
@@ -351,43 +308,7 @@ public class ReflexiveVerbsRuleTest {
     //assertIncorrect("Es pujà al cel"); ->indecidible
     assertIncorrect("El berenar es pujà al cel");
     assertIncorrect("Va baixar-se del cotxe en marxa.");
-    
-    assertIncorrect("comencen queixant");
-    assertIncorrect("comenceu a queixar-nos");
-    assertIncorrect("et puc queixar");
-    assertIncorrect("en teniu prou amb queixar");
-    assertIncorrect("en podem queixar");
-    assertIncorrect("et queixa");
-    assertIncorrect("em va queixant");
-    assertIncorrect("li va queixar");
-    assertIncorrect("hem d'emportar-t'hi");
-    assertIncorrect("heu de poder-te queixar");
-    assertIncorrect("m'has de poder queixar");
-    assertIncorrect("havent queixat");
-    assertIncorrect("haver queixat");
-    assertIncorrect("no es vam poder emportar");
-    assertIncorrect("no has de poder-vos queixar");
-    assertIncorrect("no has de queixar-ne");
-    assertIncorrect("no podeu deixar de queixar-ne");
-    assertIncorrect("no li has de queixar");
-    assertIncorrect("no em podeu queixar");
-    assertIncorrect("pareu de queixar-se'n");
-    assertIncorrect("podent abstenir");
-    assertIncorrect("poder queixar");
-    assertIncorrect("podeu queixar");
-    assertIncorrect("queixa'n");
-    assertIncorrect("queixant");
-    assertIncorrect("queixar");
-    assertIncorrect("queixeu-se'n");
-    assertIncorrect("de n'ha queixat");
-    assertIncorrect("me li ha queixat");
-    assertIncorrect("te li queixa");
-    assertIncorrect("us li va queixar");
-    assertIncorrect("va decidir suïcidar-me");
-    assertIncorrect("va queixant");
-    assertIncorrect("va queixar");
-    assertIncorrect("va queixar-li");
-    assertIncorrect("anem a aferrissar");
+
   }
 
   private void assertCorrect(String sentence) throws IOException {

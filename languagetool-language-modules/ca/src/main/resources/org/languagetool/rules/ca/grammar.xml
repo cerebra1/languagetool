@@ -97,6 +97,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
     <!ENTITY mora_retard "pagament|administra.*">
     <!ENTITY bota_recipient "sardina|congreny.*|bodega|doga|cèrcol|diàmetre|barril|vaixell|vi|racó|celler|nas|oli|ferment.*|envell.+">
     <!ENTITY bota_calçat "peu|calça.*|calce.*|muntar|enllustr.*|roba|pantaló|mitjó">
+    <!ENTITY verbs_reflexius "auto.+|abacallanar|abalançar|ablenar|aborrallonar|abotifarrar|abrinar|abromar|abstenir|acagallonar|acanyar|acarcanyar|acarnissar|acatarrar|aciutadanar|aclocar|acopar|acorriolar|acorrufar|acorruixar|adir|adonar|adormissar|afal·lerar|afarrossar|afeccionar|aferrallar|aferrissar|aferrussar|agallinar|agarbir|agarrofar|agemolir|agenollar|agotzonar|aiguabarrejar|allocar|alçurar|amatinar|amelar|amigar|amoixir|amoltonar|amotar|amullerar|amunionar|antullar|aparroquianar|aparroquiar|aperduar|apergaminar|apiadar|apoltronar|aponentar|apropinquar|apugonar|arguellar|arranxar|arrapinyar|arrasir|arravatar|arraïmar|arrepapar|arrepenjar|arrepetellar|arrigolar|arrodir|arrogar|arrossar|arruar|assemblar|assocarrar|atendar|atenir|atorrentar|atrafegar|atrevir|avencar|avidolar|avinençar|balbar|balcar|balir|balmar|bescomptar|boirar|boixar|botinflar|bromar|cagaferrar|candir|capbaixar|capmassar|captenir|cariar|carnificar|carpir|coalitzar|colltrencar|collvinclar|compenetrar|condoldre|condolir|congraciar|contorçar|contòrcer|corcorcar|coresforçar|cornuar|corruixar|crisalidar|delir|desafeccionar|desalenar|desamorar|desaparroquiar|desapassionar|desaplegar|desavenir|desbocar|descantar|descarar|descontrolar|descovar|desdubtar|desempallegar|desenrojolar|desentossudir|desfeinar|desmemoriar|desnodrir|desomplir|despondre|despreocupar|dessolidaritzar|desteixinar|desvagar|desvergonyir|desviure|dignar|embarbussar|embascar|embessonar|embordeir|embordir|emborrascar|emborrossar|embotifarrar|embotzegar|embromallar|embromar|embroquerar|emmainadar|emmalurar|emmalurir|emmarar|emmarranar|emmatar|emmigranyar|emmorronar|emmurriar|empassar|empassolar|empegueir|empenyalar|empescar|empillocar|empinyar|empiocar|empitarrar|empitimar|emplomissar|emplujar|emportar|encabotar|encabritar|encalmar|encalostrar|encaramallar|encelar|encinglar|encirar|encistar|enclaperar|encolerir|encordar|encruar|endoblir|endur|enfarfollar|enfaristolar|enfavar|enfereir|enferotgir|enferritjar|enfillar|enfugir|enfurrunyar|enfutimar|enfutismar|engelabrir|engolfar|engorgar|engripar|enguerxinar|enllagrimar|enlleganyar|enlleir|ennavegar|enneguitar|enquistar|enrinxar|enseriar|enseriosir|ensobecar|entonyinar|entossudir|entotsolar|entreabaltir|entrebadar|entrebatre|entrebesar|entrecavalcar|entredevorar|entreferir|entreforcar|entrematar|entremetre|entremirar|entrenyorar|entresaludar|entreseguir|entresoldar|entretocar|entretzenar|entrigar|envidreir|envidriar|envolar|enxautar|esbafar|esbafegar|esbatussar|esblamar|esbojarrar|esborneiar|esbromar|escabridar|escamotar|escanyellar|escanyolir|escanyussar|escapolar|escapolir|escarcanyar|escarramicar|escarrassar|escarxofar|escatifenyar|esconillar|escorporar|escullar|escunçar|esfarinar|esfetgegar|esforçar|esgargamellar|esgatinyar|esgolar|esgroguissar|esguimbar|esllanguir|esllavissar|esmaperdre|esperitar|espitellar|espitxar|espollinar|espoltrar|esporcellar|espotonar|esprimatxar|esquifir|esquitllar|estilar|estritllar|esvedellar|esventegar|esvomegar|etiolar|extralimitar|extravasar|extravenar|fugar|gamar|gaspar|gatinyar|gaubar|gloriar|grifar|immiscir|indigestar|industriar|innivar|insolentar|insurgir|inveterar|irèixer|jactar|juramentar|lateritzar|llufar|malfiar|malfixar|marfondir|migrolar|mofar|mullerar|neulir|obstinar|octubrar|olivar|pellobrir|pellpartir|pelltrencar|penedir|penjolar|personar|pollar|prosternar|queixar|querar|querellar|quillar|ramificar|rancurar|realegrar|rebel·lar|rebordeir|refiar|repanxolar|repapar|repetellar|reressagar|resclosir|ressagar|ressentir|revenjar|rojar|salinar|suïcidar|tinyar|tolir|transvestir|traspostar|ufanar|vanagloriar|vanagloriejar|vanar|vantar|vergonyar|xautar">
 ]>
 <rules lang="ca" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../../../languagetool-core/src/main/resources/org/languagetool/rules/rules.xsd">
     <unification feature="nombre">
@@ -52723,7 +52724,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="emportar" type="triggers_error" reason="ambiguous">Totes les comissions es van <marker>portar</marker> els seus propis cuiners.</example>
                 <example>Deixa de portar-me la contra.</example>
                 <example>quan el vent ja m'hauria portat les rondalles</example>
-                <example>per on volia portar-me el mestre</example>
+                <example correction="emportar" type="triggers_error" reason="ambiguous">per on volia <marker>portar</marker>-me el mestre</example>
                 <example>per a portar-te aigua</example>
                 <example>La mort del pare m’havia portat la imatge.</example>
             </rule>
@@ -52775,5 +52776,105 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="agenollar">Deixa'm <marker>agenollar-me</marker>.</example>
             </rule>
         </rulegroup>
+        <rule id="VERBS_PRONOMINALS" name="verbs pronominals">
+            <pattern>
+                <token regexp="yes" inflected="yes">&verbs_reflexius;<exception postag="_reflexiu"/>
+                    <exception inflected="yes" regexp="yes">amoixar|delirar|atendre|escollir|assolir|autografiar|automatitzar|autoritzar</exception></token>
+            </pattern>
+            <message>Aquest verb és pronominal. Probablement falta un pronom.</message>
+            <example correction="">Va <marker>queixar</marker></example>
+            <example correction="">comencen <marker>queixant</marker></example>
+            <example correction="">comenceu a <marker>queixar</marker>-nos</example>
+            <example correction="">et puc <marker>queixar</marker></example>
+            <example correction="">en teniu prou amb <marker>queixar</marker></example>
+            <example correction="">en podem <marker>queixar</marker></example>
+            <example correction="">et <marker>queixa</marker></example>
+            <example correction="">em va <marker>queixant</marker></example>
+            <example correction="">li va <marker>queixar</marker></example>
+            <example correction="">hem d'<marker>emportar</marker>-t'hi</example>
+            <example correction="">heu de poder-te <marker>queixar</marker></example>
+            <example correction="">m'has de poder <marker>queixar</marker></example>
+            <example correction="">havent <marker>queixat</marker></example>
+            <example correction="">haver <marker>queixat</marker></example>
+            <example correction="">no es vam poder <marker>emportar</marker></example>
+            <example correction="">no has de poder-vos <marker>queixar</marker></example>
+            <example correction="">no has de <marker>queixar</marker>-ne</example>
+            <example correction="">no podeu deixar de <marker>queixar</marker>-ne</example>
+            <example correction="">no li has de <marker>queixar</marker></example>
+            <example correction="">no em podeu <marker>queixar</marker></example>
+            <example correction="">pareu de <marker>queixar</marker>-se'n</example>
+            <example correction="">podent <marker>abstenir</marker></example>
+            <example correction="">poder <marker>queixar</marker></example>
+            <example correction="">podeu <marker>queixar</marker></example>
+            <example correction=""><marker>queixa</marker>'n</example>
+            <example correction=""><marker>queixant</marker></example>
+            <example correction=""><marker>queixar</marker></example>
+            <example correction="">de n'ha <marker>queixat</marker></example>
+            <example correction="">me li ha <marker>queixat</marker></example>
+            <example correction="">te li <marker>queixa</marker></example>
+            <example correction="">us li va <marker>queixar</marker></example>
+            <example correction="">va <marker>queixant</marker></example>
+            <example correction="">va <marker>queixar</marker></example>
+            <example correction="">va <marker>queixar</marker>-li</example>
+            <example correction="">anem a <marker>aferrissar</marker></example>
+            <example correction=""><marker>queixeu</marker>-se'n</example>
+            <example correction=""><marker>Delia</marker> per menjar-ne.</example>
+            <!--<example correction="">va decidir <marker>suïcidar</marker>-me</example>
+            <example>va decidir queixar-se</example>
+            <example>va proposar queixar-se</example>-->
+            <example>se li queixa</example>
+            <example>en teniu prou amb queixar-vos</example>
+            <example>Va queixar-se.</example>
+            <example>Es va queixar.</example>
+            <example>Va queixant-se.</example>
+            <example>ens anem a aferrissar</example>
+            <example>anem a aferrissar-nos</example>
+            <example>ens preparem per a anar</example>
+            <example>comencen queixant-se</example>
+            <!--<example>has de poder-te queixar</example>
+            <example>havent-se queixat</example>
+            <example>haver-se queixat</example>
+            <example>no has de poder-te queixar</example>
+            <example>no has de queixar-te</example>
+            <example>podent abstenir-se</example>
+            <example>poder-se queixar</example>
+            <example>queixant-vos</example>
+            <example>queixar-se</example>
+
+            <example>Li agrada queixar-se.</example>
+            <example>Els agrada queixar-se.</example>
+            <example>Ens agrada queixar-se.</example>
+            <example>Els animem a queixar-se.</example>
+            <example>L'animo a continuar esforçant-se.</example>
+            <example>Ens agrada queixar-nos.</example>
+            <example>Us agrada queixar-vos.</example>
+            <example correction="">Ens agrada <marker>queixar</marker>-vos.</example>
+            
+            <example correction="">havent <marker>queixat</marker></example>
+            <example correction="">haver <marker>queixat</marker></example>-->
+
+            <example>comenceu a queixar-vos</example>
+            <example>no em podia pas queixar</example>
+            <example>em puc queixar</example>
+            <example>ha de tenir-ne prou a queixar-se</example>
+            <example>ens en podem queixar</example>
+            <example>es queixa</example>
+            <example>es va queixant</example>
+            <example>t'has de poder queixar</example>
+            <example>no es va poder emportar</example>
+            <example>no podeu deixar de queixar-vos</example>
+            <example>no t'has de queixar</example>
+            <example>no us podeu deixar de queixar</example>
+            <example>pareu de queixar-vos</example>
+            <example>podeu queixar-vos</example>
+            <example>queixa't</example>
+            <example>queixeu-vos</example>
+            <example>s'ha queixat</example>
+            <example>se li ha queixat</example>
+            <example>se'ls ha queixat</example>
+            <example>se li va queixar</example>
+            <example>va queixant-se</example>
+            <example>va queixar-se-li</example>
+        </rule>
     </category>
 </rules>

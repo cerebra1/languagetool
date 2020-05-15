@@ -205,28 +205,6 @@ public class ReflexiveVerbsRule extends Rule {
       //ignore no verbs
       if (!matchPostagRegexp(tokens[i], VERB) || matchPostagRegexp(tokens[i], NO_VERB))
         continue loop;
-
-      //VERBS PRONOMINALS: Cal que hi hagi pronom reflexiu. 
-      if (matchLemmaRegexp(tokens[i], VERB_AUTO) || matchLemmaList(tokens[i],verbsPronominals)) {
-        if (matchLemmaList(tokens[i],excepVerbsPronominals)) // atengué l'administració 
-          continue loop;
-        if (matchPostagRegexp(tokens[i], VERB_PARTICIPI) && !tokens[i-1].hasLemma("haver")) 
-          continue loop;
-        if (isThereVerbBeforeList(tokens,i, verbsDeixarFer)  // el fa agenollar
-            && (isThereBefore(tokens, i, LEMMA_PRONOM_CD, POSTAG_PRONOM_CD)
-                || isThereBefore(tokens, i, LEMMA_PRONOM_CI, POSTAG_PRONOM_CI)
-                || isThereAfterWithoutPreposition(tokens, i, POSTAG_CD))) //van fer agenollar els presos
-          continue loop;
-        if (isThereReflexivePronoun(tokens, i)) 
-          continue loop;
-        // the rule matches
-        final String msg = "Aquest verb és pronominal. Probablement falta un pronom.";
-        final RuleMatch ruleMatch = new RuleMatch(this, sentence,
-            tokens[i].getStartPos(), tokens[i].getEndPos(), msg,
-            "Verb pronominal: falta un pronom");
-        ruleMatches.add(ruleMatch);
-        continue loop;
-      }
       
       //VERBS NO PRONOMINALS: No hi ha d'haver pronom reflexiu. 
       if (matchLemmaList(tokens[i], verbsNoPronominals)) {
